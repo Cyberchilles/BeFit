@@ -1,0 +1,33 @@
+@model BeFit.ViewModels.ExerciseStatisticsViewModel
+@{
+    ViewData["Title"] = "Moje statystyki";
+}
+<p>Podsumowanie ćwiczeń z sesji rozpoczętych w ostatnich 28 dniach. Każdy zapisany wpis to jedno wykonanie ćwiczenia.</p>
+@if (Model.Rows.Count == 0)
+{
+    <p>Brak ćwiczeń z ostatnich czterech tygodni.</p>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead><tr>
+            <th>@Html.DisplayNameFor(m => m.Rows[0].ExerciseName)</th>
+            <th>@Html.DisplayNameFor(m => m.Rows[0].TimesPerformed)</th>
+            <th>@Html.DisplayNameFor(m => m.Rows[0].TotalRepetitions)</th>
+            <th>@Html.DisplayNameFor(m => m.Rows[0].AverageWeightKg)</th>
+            <th>@Html.DisplayNameFor(m => m.Rows[0].MaxWeightKg)</th>
+        </tr></thead>
+        <tbody>
+        @foreach (var row in Model.Rows)
+        {
+            <tr>
+                <td>@row.ExerciseName</td>
+                <td>@row.TimesPerformed</td>
+                <td>@row.TotalRepetitions</td>
+                <td>@row.AverageWeightKg.ToString("0.##")</td>
+                <td>@row.MaxWeightKg.ToString("0.##")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,12 @@
+@model BeFit.Models.WorkoutExercise
+@{
+    ViewData["Title"] = "Szczegóły wykonanego ćwiczenia";
+}
+<dl class="row">
+    <dt>@Html.DisplayNameFor(m => m.ExerciseTypeId)</dt><dd>@Model.ExerciseType.Name</dd>
+    <dt>@Html.DisplayNameFor(m => m.TrainingSessionId)</dt><dd>@Model.TrainingSession.StartedAt.ToString("dd.MM.yyyy HH:mm")</dd>
+    <dt>@Html.DisplayNameFor(m => m.WeightKg)</dt><dd>@Model.WeightKg.ToString("0.##")</dd>
+    <dt>@Html.DisplayNameFor(m => m.Sets)</dt><dd>@Model.Sets</dd>
+    <dt>@Html.DisplayNameFor(m => m.RepsPerSet)</dt><dd>@Model.RepsPerSet</dd>
+</dl>
+<p><a asp-action="Edit" asp-route-id="@Model.Id">Edytuj</a> <a asp-action="Index">Powrót</a></p>

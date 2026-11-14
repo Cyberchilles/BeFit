@@ -1,0 +1,37 @@
+@model IEnumerable<BeFit.Models.WorkoutExercise>
+@{
+    ViewData["Title"] = "Wykonane ćwiczenia";
+}
+<p><a class="btn btn-primary" asp-action="Create">Dodaj wykonane ćwiczenie</a></p>
+@if (!Model.Any())
+{
+    <p>Nie masz jeszcze zapisanych ćwiczeń. Najpierw utwórz sesję treningową.</p>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead><tr>
+            <th>@Html.DisplayNameFor(m => m.ExerciseTypeId)</th>
+            <th>@Html.DisplayNameFor(m => m.TrainingSessionId)</th>
+            <th>@Html.DisplayNameFor(m => m.WeightKg)</th>
+            <th>@Html.DisplayNameFor(m => m.Sets)</th>
+            <th>@Html.DisplayNameFor(m => m.RepsPerSet)</th>
+            <th>Operacje</th>
+        </tr></thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ExerciseType.Name</td>
+                <td>@item.TrainingSession.StartedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@item.WeightKg.ToString("0.##")</td>
+                <td>@item.Sets</td>
+                <td>@item.RepsPerSet</td>
+                <td><a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

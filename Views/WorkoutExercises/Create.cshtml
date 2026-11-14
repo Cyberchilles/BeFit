@@ -1,0 +1,9 @@
+@model BeFit.Models.WorkoutExercise
+@{
+    ViewData["Title"] = "Dodaj wykonane ćwiczenie";
+}
+<form asp-action="Create" method="post">
+    <partial name="_FormFields" model="Model" />
+    <button class="btn btn-primary" type="submit">Zapisz ćwiczenie</button>
+    <a asp-action="Index">Anuluj</a>
+</form>

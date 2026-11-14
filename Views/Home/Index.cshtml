@@ -1,8 +1,38 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "BeFit - dziennik treningowy";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mb-5">
+    <h1 class="display-5 fw-bold">BeFit</h1>
+    <p class="lead">Zapisuj treningi i sprawdzaj swoje postępy.</p>
+</div>
+<div class="row g-3">
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100"><div class="card-body">
+            <h2 class="h5">Katalog ćwiczeń</h2>
+            <p>Lista dostępnych ćwiczeń.</p>
+            <a class="btn btn-outline-primary" asp-controller="ExerciseTypes" asp-action="Index">Otwórz</a>
+        </div></div>
+    </div>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <div class="col-md-6 col-lg-3"><div class="card h-100"><div class="card-body">
+            <h2 class="h5">Moje treningi</h2><p>Dodawaj i edytuj sesje.</p>
+            <a class="btn btn-outline-primary" asp-controller="TrainingSessions" asp-action="Index">Otwórz</a>
+        </div></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100"><div class="card-body">
+            <h2 class="h5">Wykonane ćwiczenia</h2><p>Serie, powtórzenia i ciężar.</p>
+            <a class="btn btn-outline-primary" asp-controller="WorkoutExercises" asp-action="Index">Otwórz</a>
+        </div></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100"><div class="card-body">
+            <h2 class="h5">Statystyki</h2><p>Wyniki z ostatnich 28 dni.</p>
+            <a class="btn btn-outline-primary" asp-controller="Statistics" asp-action="Index">Otwórz</a>
+        </div></div></div>
+    }
+    else
+    {
+        <div class="col-md-6 col-lg-3"><div class="card h-100"><div class="card-body">
+            <h2 class="h5">Nowe konto</h2><p>Zacznij korzystać z BeFit.</p>
+            <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Zarejestruj się</a>
+        </div></div></div>
+    }
 </div>

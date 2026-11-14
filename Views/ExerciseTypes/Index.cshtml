@@ -1,0 +1,32 @@
+@model IEnumerable<BeFit.Models.ExerciseType>
+@{
+    ViewData["Title"] = "Katalog ćwiczeń";
+}
+@if (TempData["Error"] != null) { <div class="alert alert-warning">@TempData["Error"]</div> }
+@if (User.IsInRole("Admin"))
+{
+    <p><a class="btn btn-primary" asp-action="Create">Dodaj typ ćwiczenia</a></p>
+}
+@if (!Model.Any())
+{
+    <p>Brak dostępnych ćwiczeń.</p>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead><tr><th>@Html.DisplayNameFor(m => m.Name)</th><th>Operacje</th></tr></thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr><td>@item.Name</td><td>
+                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                }
+            </td></tr>
+        }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,16 @@
+@model BeFit.Models.WorkoutExercise
+@{
+    ViewData["Title"] = "Usuń wykonane ćwiczenie";
+}
+<p>Czy na pewno chcesz usunąć ten wpis?</p>
+<dl class="row">
+    <dt>@Html.DisplayNameFor(m => m.ExerciseTypeId)</dt><dd>@Model.ExerciseType.Name</dd>
+    <dt>@Html.DisplayNameFor(m => m.TrainingSessionId)</dt><dd>@Model.TrainingSession.StartedAt.ToString("dd.MM.yyyy HH:mm")</dd>
+    <dt>@Html.DisplayNameFor(m => m.WeightKg)</dt><dd>@Model.WeightKg.ToString("0.##") kg</dd>
+    <dt>@Html.DisplayNameFor(m => m.Sets)</dt><dd>@Model.Sets</dd>
+    <dt>@Html.DisplayNameFor(m => m.RepsPerSet)</dt><dd>@Model.RepsPerSet</dd>
+</dl>
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+    <button class="btn btn-danger" type="submit">Usuń wpis</button>
+    <a asp-action="Index">Anuluj</a>
+</form>

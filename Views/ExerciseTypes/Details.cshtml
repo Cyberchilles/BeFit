@@ -1,0 +1,7 @@
+@model BeFit.Models.ExerciseType
+@{
+    ViewData["Title"] = "Szczegóły ćwiczenia";
+}
+<dl class="row"><dt>@Html.DisplayNameFor(m => m.Name)</dt><dd>@Model.Name</dd></dl>
+<p><a asp-action="Index">Powrót do katalogu</a>
+@if (User.IsInRole("Admin")) { <a asp-action="Edit" asp-route-id="@Model.Id">Edytuj</a> }</p>

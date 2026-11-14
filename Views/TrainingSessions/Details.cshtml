@@ -1,0 +1,10 @@
+@model BeFit.Models.TrainingSession
+@{
+    ViewData["Title"] = "Szczegóły treningu";
+}
+<dl class="row">
+    <dt>@Html.DisplayNameFor(m => m.StartedAt)</dt><dd>@Model.StartedAt.ToString("dd.MM.yyyy HH:mm")</dd>
+    <dt>@Html.DisplayNameFor(m => m.EndedAt)</dt><dd>@Model.EndedAt.ToString("dd.MM.yyyy HH:mm")</dd>
+</dl>
+<p><a class="btn btn-primary" asp-controller="WorkoutExercises" asp-action="Create" asp-route-sessionId="@Model.Id">Dodaj ćwiczenie do treningu</a></p>
+<p><a asp-action="Edit" asp-route-id="@Model.Id">Edytuj</a> <a asp-action="Index">Powrót</a></p>

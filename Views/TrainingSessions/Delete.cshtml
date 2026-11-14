@@ -1,0 +1,22 @@
+@model BeFit.Models.TrainingSession
+
+@{
+    ViewData["Title"] = "Usuń trening";
+}
+
+<h2>Usuwanie treningu</h2>
+
+<p>Czy na pewno chcesz usunąć ten trening?</p>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(x => x.StartedAt)</dt>
+    <dd class="col-sm-9">@Model.StartedAt.ToString("dd.MM.yyyy HH:mm")</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(x => x.EndedAt)</dt>
+    <dd class="col-sm-9">@Model.EndedAt.ToString("dd.MM.yyyy HH:mm")</dd>
+</dl>
+
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+    <button type="submit" class="btn btn-danger">Usuń trening</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>

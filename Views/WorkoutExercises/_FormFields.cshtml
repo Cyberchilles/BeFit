@@ -1,0 +1,33 @@
+@model BeFit.Models.WorkoutExercise
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="mb-3">
+    <label asp-for="ExerciseTypeId"></label>
+    <select asp-for="ExerciseTypeId" asp-items="ViewBag.ExerciseTypes" class="form-control">
+        <option value="">Wybierz ćwiczenie</option>
+    </select>
+    <span asp-validation-for="ExerciseTypeId" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="TrainingSessionId"></label>
+    <select asp-for="TrainingSessionId" asp-items="ViewBag.TrainingSessions" class="form-control">
+        <option value="">Wybierz własny trening</option>
+    </select>
+    <span asp-validation-for="TrainingSessionId" class="text-danger"></span>
+    <small>Na liście widoczne są wyłącznie Twoje treningi.</small>
+</div>
+<div class="mb-3">
+    <label asp-for="WeightKg"></label>
+    <input asp-for="WeightKg" type="number" min="0" max="500" step="0.01" class="form-control" />
+    <span asp-validation-for="WeightKg" class="text-danger"></span>
+    <small>Dla ćwiczenia bez dodatkowego obciążenia wpisz 0.</small>
+</div>
+<div class="mb-3">
+    <label asp-for="Sets"></label>
+    <input asp-for="Sets" type="number" min="1" max="100" class="form-control" />
+    <span asp-validation-for="Sets" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="RepsPerSet"></label>
+    <input asp-for="RepsPerSet" type="number" min="1" max="500" class="form-control" />
+    <span asp-validation-for="RepsPerSet" class="text-danger"></span>
+</div>

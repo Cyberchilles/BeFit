@@ -1,0 +1,9 @@
+@model BeFit.Models.WorkoutExercise
+@{
+    ViewData["Title"] = "Edytuj wykonane ćwiczenie";
+}
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    <partial name="_FormFields" model="Model" />
+    <button class="btn btn-primary" type="submit">Zapisz zmiany</button>
+    <a asp-action="Index">Anuluj</a>
+</form>
