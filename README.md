@@ -25,4 +25,4 @@ Prosta aplikacja internetowa do zarządzania treningami, stworzona w **ASP.NET C
 3. Wykonaj `Update-Database` w konsoli menedżera pakietów NuGet.
 4. Uruchom aplikację (`Ctrl + F5`).
 
-Projekt wykonany w ramach zajęć z programowania aplikacji internetowych.
+Projekt wykonany w ramach zajęć z programowania zaawansowanego.
